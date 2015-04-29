@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Keep Calm</title>
+  <meta name="description" content="Keep Calm">
+  <meta name="author" content="Matt Reider">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  @font-face {
+    font-family: 'keep-calm'; /*a name to be used later*/
+    src: url('static/css/keep-calm.ttf');
+    font-color:white;
+  }
+  .keep-calm {
+    font-family: 'keep-calm';
+  }
+  </style>
+  <link rel="stylesheet" href="static/css/normalize.css">
+  <link rel="stylesheet" href="static/css/skeleton.css">
+  <link rel="icon" type="static/images/png" href="static/images/crown.png">
+
+  <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+</head>
+<body bgcolor="#000000">
+        <p>&nbsp;</p>
+        <div class="keep-calm" id="result" style="margin: 0px auto;text-align: center;color:white;"></div>
+  <script type="text/javascript">
+  function instances(){
+    $.get( "/message", function( data ) {
+      $( "#result" ).empty();
+      $( "#result" ).html( data );
+    });
+  }
+  var t=setInterval(instances,1000);
+  </script>
+</body>
+</html>
