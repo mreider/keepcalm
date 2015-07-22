@@ -5,7 +5,12 @@ import requests
 app = Flask(__name__)
 port = int(os.getenv("PORT"))
 vcap = json.loads(os.environ['VCAP_SERVICES'])
+
+# for a local CF (not pivotol web services) change this next bit to svc = vcap['p-redis'][0]['credentials']
 svc = vcap['rediscloud'][0]['credentials']
+
+# for a local CF (not pivotal web services) change this next bit to
+# db = redis.StrictRedis(host=svc["host"], port=svc["port"], password=svc["password"],db=0)
 db = redis.StrictRedis(host=svc["hostname"], port=svc["port"], password=svc["password"],db=0)
 
 @app.route('/update',methods=["POST"])
